@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="src/js/main.ts" type="module"></script>
+    <title>Todo-lista</title>
+    <link rel="stylesheet" href="src/css/styles.scss">
 </head>
 <body>
-    
+    <main>
+        <h1>Todo-lista</h1>
+        <form id="todo-form">
+            <label for="uppgift">Uppgift:</label>
+            <input type="text" id="uppgift" required>
+            <label for="prioritet">Prioritet:</label>
+            <select id="prioritet" required>
+                <option value="1">Hög</option>
+                <option value="2">Medel</option>
+                <option value="3">Låg</option>
+            </select>
+            <button type="submit">Lägg till i listan</button>
+        </form>
+
+        <ul id="todo-list"></ul>
+
+        <button id="mark-completed">Markera klar</button>
+    </main>
 </body>
 </html>
