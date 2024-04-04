@@ -35,8 +35,15 @@ export class ToDoList {
         return true;
     }
 
+    /* Används för att veta vad som finns i listan */
     getToDos(): Todo[] {
         return this.todos;
+    }
+
+    /* Tar bort från localstorage och todos. */
+    clearAllTodos(): void {
+        this.todos = [];
+        this.saveToLocalStorage(); 
     }
     
     /* Kod som markerar ifall rätt index är completed eller ej */

@@ -8,7 +8,6 @@ const todoForm = document.getElementById('todo-form') as HTMLFormElement;
 const taskInput = document.getElementById('task') as HTMLInputElement;
 const priorityInput = document.getElementById('priority') as HTMLInputElement;
 const todoList = document.getElementById('todo-list') as HTMLUListElement;
-const markCompletedButton = document.getElementById('mark-completed') as HTMLButtonElement;
 const resetButton = document.getElementById('reset') as HTMLButtonElement;
 
 /* Funktion för att visa data */
@@ -18,11 +17,21 @@ function showTodos(): void {
     newToDoList.getToDos().forEach((todo, index) => {
         const todoItem = document.createElement('li');
         todoItem.textContent = `${todo.task} - Prioritet: ${todo.priority}`;
+
+        const markAsCompletedButton = document.createElement('button');
+        markAsCompletedButton.className = 'donebutton'
+        markAsCompletedButton.textContent = 'Markera som klar';
+        markAsCompletedButton.addEventListener('click', () => {
+            newToDoList.markTodoCompleted(index);
+            showTodos(); 
+        });
+
         if (todo.completed) {
             todoItem.style.textDecoration = 'line-through';
         }
 
         todoList.appendChild(todoItem);
+        todoItem.appendChild(markAsCompletedButton);
     })
 }
 /* Eventlistener för formuläret, skapar en ny "todo" */
@@ -38,13 +47,10 @@ todoForm.addEventListener('submit', (e) => {
     }
 });
 
-/* Markera klar knappen */
-markCompletedButton.addEventListener('click', () => {
-    newToDoList.getToDos().forEach((todo, index) => {
-        if (!todo.completed) {
-            newToDoList.markTodoCompleted(index);
-        }
-    });
+/* Ta bort lista knapp, kallar clearAllTodos funktion */
+resetButton.addEventListener('click', () => {
+    newToDoList.clearAllTodos();
     showTodos();
 })
+
 showTodos();
