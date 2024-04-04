@@ -15,12 +15,42 @@ export class ToDoList {
         this.loadFromLocalStorage();
     }
 
+    /* Lägger till i listan, if-sats kontrollerar ifall där finns något värde, om där inte finns returnerar den false.  */
+    addTodo(task: string, priority: number): boolean {
+        if (task.trim() === '' || priority < 1 || priority > 3) {
+            return false; 
+        }
+
+        const newToDo: Todo = {
+            task: task, 
+            completed: false,
+            priority: priority
+        };
+
+        /* Lägger till värde i todos, returnerar true (lyckat) */
+        this.saveToLocalStorage();
+        this.todos.push(newToDo);
+        return true;
+    }
+
+    getToDos(): Todo[] {
+        return this.todos;
+    }
+    
+    /* Kod som markerar ifall rätt index är completed eller ej */
+    markTodoCompleted(todoIndex: number): void {
+        if (todoIndex >= 0 && todoIndex < this.todos.length) {
+            this.todos[todoIndex].completed = true;
+            this.saveToLocalStorage();
+        }
+    }
+    
     /* Localstorage */
-    saveToLocalStorage(): void {
+    private saveToLocalStorage(): void {
         localStorage.setItem('todos', JSON.stringify(this.todos));
     }
     
-    loadFromLocalStorage(): void {
+    private loadFromLocalStorage(): void {
         const data = localStorage.getItem('todos');
         if (data) {
             this.todos = JSON.parse(data);
