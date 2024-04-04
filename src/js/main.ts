@@ -28,8 +28,10 @@ export class ToDoList {
         };
 
         /* Lägger till värde i todos, returnerar true (lyckat) */
-        this.saveToLocalStorage();
+        
         this.todos.push(newToDo);
+        this.saveToLocalStorage();
+        
         return true;
     }
 
