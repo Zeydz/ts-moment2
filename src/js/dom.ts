@@ -11,6 +11,7 @@ const todoList = document.getElementById('todo-list') as HTMLUListElement;
 const markCompletedButton = document.getElementById('mark-completed') as HTMLButtonElement;
 
 function showTodos(): void {
+    todoList.innerHTML = '';
     newToDoList.getToDos().forEach((todo, index) => {
         const todoItem = document.createElement('li');
         todoItem.textContent = `${todo.task} - Prioritet: ${todo.priority}`;
