@@ -16,8 +16,8 @@ function showTodos(): void {
     /* Kallar på "getToDos" och får returnerat värde tillbaka.  */
     newToDoList.getToDos().forEach((todo, index) => {
         const todoItem = document.createElement('li');
-        todoItem.textContent = `${todo.task} - Prioritet: ${todo.priority}`;
-
+        todoItem.innerHTML = `<strong>Uppgift: </strong>${todo.task}<br><strong>Prioritet: </strong> ${todo.priority}<br>`;
+        
         const markAsCompletedButton = document.createElement('button');
         markAsCompletedButton.className = 'donebutton'
         markAsCompletedButton.textContent = 'Markera som klar';

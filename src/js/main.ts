@@ -28,7 +28,6 @@ export class ToDoList {
         };
 
         /* Lägger till värde i todos, returnerar true (lyckat) */
-        
         this.todos.push(newToDo);
         this.saveToLocalStorage();
         
@@ -48,7 +47,7 @@ export class ToDoList {
     
     /* Kod som markerar ifall rätt index är completed eller ej */
     markTodoCompleted(todoIndex: number): void {
-        if (todoIndex >= 0 && todoIndex < this.todos.length) {
+        if (todoIndex >= 0) {
             this.todos[todoIndex].completed = true;
             this.saveToLocalStorage();
         }
@@ -63,6 +62,7 @@ export class ToDoList {
         const data = localStorage.getItem('todos');
         if (data) {
             this.todos = JSON.parse(data);
+            console.log(this.todos);
         }
     }
 }

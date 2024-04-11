@@ -11,11 +11,12 @@ main {
     width: 40%;
     margin: auto;
     margin-top: 10em;
-}
 
-h1 {
-    margin-bottom: 20px;
-    font-size: 1.3em;
+    h1 {
+        margin-bottom: 20px;
+        font-size: 1.3em;
+        text-align: center;
+    }
 }
 
 form {
@@ -49,11 +50,32 @@ button {
 }
 
 .donebutton {
-    margin-left: 15px;
+    margin: 10px 0;
     padding: 5px 15px;
     border-radius: 10px;
     background-color: #007bff;
     color: #fff;
     border: none;
     cursor: pointer;
+}
+
+li {
+    list-style: none;
+    margin: 15px 0;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#reset {
+    background-color: red;
+    color: white;
+}
+
+
+/* responsivt */
+
+@media (max-width: 900px) {
+    main {
+        width: 80%;
+    }
 }
